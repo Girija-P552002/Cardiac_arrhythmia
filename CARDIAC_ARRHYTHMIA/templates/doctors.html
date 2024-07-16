@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="Cardiac Arrhythmia Prediction">
+  <meta name="author" content="Venkata Sreeram">
+  <meta name="og:image" content="static/logo1.png">
+  <meta name="Keywords" content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  <title>Cardiac Arrhythmia Prediction</title>
+  <link rel="icon" href="{{ url_for('static', filename = 'logo1.png') }}" type="image/icon type">
+  <p> Cardiac Arrhythmia Prediction </p>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <!-- <style>
+    html, body{ height:100%; margin:0; }
+header{ height:50px;}
+footer{ height:75px; background:black; }
+
+/* Trick */
+body{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+footer{
+  padding:10px;
+  margin-top:auto;
+  margin-bottom: auto; 
+}
+  </style> -->
+  <style>
+    body
+    {
+    background-image: url('https://img.freepik.com/premium-vector/emergency-ekg-monitoring-blue-glowing-neon-heart-pulse-heart-beat-electrocardiogram_322958-842.jpg'); 
+    background-size: 100% 100vh; 
+    background-repeat: no-repeat;
+    }
+    h1
+    {
+        color: burlywood;
+    }
+    .row
+    {
+      margin-top: 50px;
+    }
+    .member img{
+      border-radius: 50%;
+    }
+    .img-fluid
+    {
+      border: none;
+      
+      height: 220px;
+      width: 199px;
+    }
+    .member-info
+    {
+      margin-left: 100px;
+    }
+    .member-info4
+    {
+      margin-left: 60px;
+    }
+    .btn1{
+      margin-left: 6px;
+      height: 30px;
+      width: 160px;
+      margin-top: -10px;
+      border: none;
+      background-color: rgb(173, 171, 171);
+      color: rgb(174, 13, 64);
+    }
+    .btn2{
+      margin-left: 4px;
+      height: 30px;
+      width: 160px;
+      margin-top: 20px;
+      border: none;
+      background-color: rgb(173, 171, 171);
+      color: rgb(174, 13, 64);
+    }.btn3{
+      margin-left: 4px;
+      height: 30px;
+      width: 160px;
+      margin-top: 10px;
+      border: none;
+      background-color: rgb(173, 171, 171);
+      color: rgb(174, 13, 64);
+    }.btn4{
+      margin-left: 4px;
+      margin-top: 10px;
+      height: 30px;
+      width: 160px;
+      border: none;
+      background-color: rgb(173, 171, 171);
+      color: rgb(174, 13, 64);
+    }
+    .pic1
+    {
+      width: 180px;
+    }
+    .pic3
+    {
+      width: 150px;
+    }
+  </style>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+        <a style="text-decoration: none; color: rgb(255, 255, 255)" href="{{ url_for('home') }}">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+             <!-- <li class="nav-item active">
+               <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+             </li> -->
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('fetalPage') }}">Cardiac Arrhythmia Predictor</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+           </ul>
+         </div>
+       </nav>
+
+       
+	<br>
+<br>
+<br>
+<br>
+<main>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+         <!-- ======= Doctors Section ======= -->
+    <section id="doctors" style="background-color: rgb(245, 243, 243);" class="doctors">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Doctors</h2>
+          <!-- <p></p> -->
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6" >
+            <div class="member d-flex align-items-start">
+              <div class="pic1"><img src="https://www.manipalhospitals.com/uploads/doctors_photo/dr-ranjan-shetty-hod-and-consultant-interventional-cardiologist-cardiology.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Dr. Ranjan Shetty</h4>
+                <span>Hod & Consultant-Interventional Cardialogy |(MD (AIIMS))</span>
+                <p>Manipal Hospitals <br>Old Airport Road,Bengalore</p>
+                <br>
+                <button class="btn1"> <a href="https://www.lifesonmanipal.com/appointment?visit=3&location=MMY">Book Now</button>
+                <!-- <h5> Kolkata</h5> -->
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="https://www.sakraworldhospital.com/doctor-images/222%20x%20250%20Sreekant.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Dr Sreekanth Shetty</h4>
+                <span>MD (General Medicine), DM (Cardiology) | Senior Consultant</span>
+                <p>SAKRA World Hospitals,Bellandur,Bengaluru</p>
+                <button class="btn2"> <a href="https://sakraworldhospital.com/request-appointment">Book Now</button>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic3"><img src="https://imagesx.practo.com/providers/dr-shilpa-jayaprakash-cardiologist-bangalore-9c1f623a-000e-4722-b781-52c02ffaede8.jpg?i_type=t_70x70-2x-webp" class="img-fluid" alt=""></div>
+              <div class="member-info4">
+                <h4>Dr. Shilpa JP</h4>
+                <span>MBBS|DM|MD Cardialogy <br> Cardiologist</span>
+                <p>Appollo Clinic <br> JP nagar,7 Phase Bengaluru</p>
+                <button class="btn3"> <a href="https://www.practo.com/appointment/dr-shilpa-jayaprakash-cardiologist/682786/book?type=abs&doctor_id=682786&tracker=Consultation_procedure&appointment_time=2024-05-15%2016%3A30%3A00&appointment_token=NjgyNzg2UHJhY3RpY2VEb2N0b3I%3D&qikwell=true&procedure_name=Consultation&procedure_id=530e8b0c-a756-40bd-8550-c81f102a29f0&slot_id=slot&prepaid=false&amount=850&discount=0&discount_type=&cancellation_fee=0&prepaid_type=disabled&cancellation_charge=0&cancellation_fee_type=ABSOLUTE&plus_discount=0&total_amount_to_pay=850&disclaimers_v2%5B0%5D%5Btext%5D=If%20you%20wish%20to%20cancel%20or%20reschedule%2C%20you%20can%20do%20it%20upto%202%20hours%20before%20the%20appointment%20time&disclaimers_v2%5B0%5D%5Bbold_text%5D%5B0%5D=2%20hours%20before&disclaimers_v2%5B0%5D%5Bposition%5D=1&disclaimers_v2%5B0%5D%5Bicon%5D=clock&disclaimers_v2%5B1%5D%5Btext%5D=You%20will%20be%20charged%20Rs%2050%20cancellation%20fee%20if%20you%20cancel%20within%202%20hours%20of%20your%20appointment%20time%20or%20absent&disclaimers_v2%5B1%5D%5Bbold_text%5D%5B0%5D=Rs%2050%20cancellation%20fee&disclaimers_v2%5B1%5D%5Bposition%5D=2&disclaimers_v2%5B1%5D%5Bicon%5D=rupee&disclaimers_v2%5B2%5D%5Btext%5D=However%2C%20in%20the%20event%20of%20doctor%20no%20show%2C%20you%20will%20not%20be%20charged%20a%20cancellation%20fee&disclaimers_v2%5B2%5D%5Bposition%5D=3&disclaimers_v2%5B2%5D%5Bicon%5D=smiley">Book NOw</button>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="https://www.asterhospitals.in/sites/default/files/styles/doctors_details_xl/public/2024-04/Dr.%20Madhusudhan.jpg.webp?itok=AwAicfgi" class="img-fluid" alt=""></div>
+              <div class="member-info4">
+                <h4 >Dr. Madhusudan Raikar</h4>
+                <span>Consultant - Interventional Cardiology|MBBS,MD,</span>
+                <p>Aster Hospitals <br> Hebbala Bengaluru </p>
+                <p>
+                  <button class="btn4"> <a href="https://www.asterhospitals.in/form/aster-cmi-bangalore-booking?hospital=2146&doctor=9259">Book NOw</button>
+                </p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Doctors Section -->
+        </div>
+        <div class="col-md-1"></div>
+          
+        </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
